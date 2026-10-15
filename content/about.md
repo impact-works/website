@@ -36,6 +36,6 @@ Good work comes from paying attention: understanding what you’re working with,
 
 ### Community
 
-Part of the same community.
+We’re part of something bigger.
 
 We’re part of the community we serve, and our customers are our partners. We put the people doing the work first and share what we build so others can use it and keep it going.
