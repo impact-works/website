@@ -24,7 +24,7 @@ For the past few years, Matt has worked with Silicon Valley startups exploring n
 
 ### Justice
 
-Put technology in more people’s hands.
+Redistribute access to technology.
 
 Impact Works is as much a political act as it is a business. We put powerful technology in the hands of people and communities the market leaves behind. We refuse work that makes inequality worse.
 
