@@ -4,7 +4,7 @@ description: "Meet Matt Wynne and explore Impact Works’ values: justice, quali
 ---
 We’re rooted in our community. We work with small organizations doing good, building and sharing excellent technology that helps them do more.
 
-## Matt Wynne
+## Matt Wynne {#matt}
 
 **Founder**
 
@@ -20,7 +20,7 @@ For the past few years, Matt has worked with Silicon Valley startups exploring n
 
 [More about Matt →](https://mattwynne.net/about)
 
-## Our values
+## Our values {#values}
 
 ### Justice
 

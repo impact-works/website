@@ -114,6 +114,7 @@ assert about_headings == [
     ("h2", "Our values"),
     *[("h3", name) for name in VALUES],
 ], f"Unexpected About headings: {about_headings}"
+assert [heading.get("id") for heading in about.elements("h2")] == ["matt", "values"], "Missing section anchors"
 about_text = normalize(about.body_text)
 bio = about_text.split("Matt Wynne", 1)[1].split("Our values", 1)[0]
 assert len(bio.split()) >= 100, "Missing or incomplete biography"
