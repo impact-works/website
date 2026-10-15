@@ -1,5 +1,5 @@
 ---
 title: "impact works"
 vision: "The world's best technology in the hands of people doing good in the world."
-mission: "Rooted in our community, we partner with small mission-driven organizations to build and share excellent technology that multiplies their impact."
+mission: "We’re rooted in our community. We work with small organizations doing good, building and sharing excellent technology that helps them do more."
 ---

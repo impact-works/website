@@ -1,6 +1,9 @@
 {{ define "main" }}
   <div class="page">
-    <h1>{{ .Title }}</h1>
+    <header class="page-header">
+      <h1 class="brand">{{ .Title }}</h1>
+      {{ partial "navigation.html" . }}
+    </header>
     <div class="statements">
       <p class="vision">{{ .Params.vision }}</p>
       <p class="mission">{{ .Params.mission }}</p>

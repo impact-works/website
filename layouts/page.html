@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <div class="page page--about">
+    <header class="page-header">
+      <a class="brand" href="{{ site.Home.RelPermalink }}">impact works</a>
+      {{ partial "navigation.html" . }}
+    </header>
+    <article class="about-copy">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ .Content }}
+    </article>
+  </div>
+{{ end }}

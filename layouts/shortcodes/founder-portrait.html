@@ -1,0 +1,14 @@
+{{ $image := resources.Get "images/matt-wynne.jpg" }}
+{{ $small := $image.Resize "320x webp q85" }}
+{{ $large := $image.Resize "640x webp q85" }}
+<figure class="founder-portrait">
+  <img
+    src="{{ $large.RelPermalink }}"
+    srcset="{{ $small.RelPermalink }} 320w, {{ $large.RelPermalink }} 640w"
+    sizes="(max-width: 40rem) 192px, 256px"
+    width="{{ $large.Width }}"
+    height="{{ $large.Height }}"
+    alt="Matt Wynne, founder of Impact Works"
+    decoding="async"
+  />
+</figure>
