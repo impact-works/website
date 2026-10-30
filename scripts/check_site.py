@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import sys
 from urllib.parse import unquote, urlsplit
+import xml.etree.ElementTree as ET
 
 
 BRAND = "impact works"
@@ -82,6 +83,14 @@ index = root / "index.html"
 about_index = root / "about/index.html"
 assert index.is_file(), "Missing built homepage"
 assert about_index.is_file(), "Missing About page"
+logo = root / "images/impact-works-logo.svg"
+assert logo.is_file(), "Missing reusable logo"
+svg = ET.parse(logo).getroot()
+ns = {"svg": "http://www.w3.org/2000/svg"}
+assert svg.tag == f"{{{ns['svg']}}}svg" and svg.get("viewBox"), "Invalid SVG logo"
+assert svg.find("svg:path", ns) is not None, "Missing outlined lettering"
+assert svg.find("svg:circle", ns) is not None, "Missing logo dot"
+assert not any(svg.findall(f".//svg:{tag}", ns) for tag in ["text", "image"]), "Logo must not depend on fonts or raster images"
 assert set(root.rglob("*.html")) == {index, about_index}, "Unexpected HTML pages"
 
 home = Page(index)
@@ -159,4 +168,4 @@ for page in [home, about]:
         if not urlsplit(href).scheme:
             assert local_target(href).is_file(), f"Broken internal link: {href}"
 
-print("Passed: homepage, About page, values, navigation, metadata, and local assets.")
+print("Passed: homepage, About page, values, navigation, metadata, local assets, and reusable SVG logo.")

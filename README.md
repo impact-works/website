@@ -29,3 +29,7 @@ python3 scripts/check_site.py /tmp/impactworks-project-check
 Pushes to `main` run `.github/workflows/gh-pages.yaml`, build with Hugo Extended 0.152.2, check the output, and deploy it with GitHub Pages Actions.
 
 The custom domain is `impactworks.dev`.
+
+## Logo
+
+The reusable logo is published at [impactworks.dev/images/impact-works-logo.svg](https://impactworks.dev/images/impact-works-logo.svg). Its source is `static/images/impact-works-logo.svg`: a transparent SVG with outlined lettering, so it scales without requiring fonts.
