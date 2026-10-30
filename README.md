@@ -33,3 +33,5 @@ The custom domain is `impactworks.dev`.
 ## Logo
 
 The reusable logo is published at [impactworks.dev/images/impact-works-logo.svg](https://impactworks.dev/images/impact-works-logo.svg). Its source is `static/images/impact-works-logo.svg`: a transparent SVG with outlined lettering, so it scales without requiring fonts.
+
+A transparent 1600 × 239 px PNG export is available at [impactworks.dev/images/impact-works-logo.png](https://impactworks.dev/images/impact-works-logo.png), sourced from `static/images/impact-works-logo.png`.
