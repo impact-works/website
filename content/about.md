@@ -22,9 +22,9 @@ For the past few years, Matt has worked with Silicon Valley startups exploring n
 
 ## Our values {#values}
 
-### Justice
+### Equity
 
-Redistribute access to technology.
+Powerful technology shouldn’t depend on deep pockets.
 
 Impact Works is as much a political act as it is a business. We put powerful technology in the hands of people and communities the market leaves behind. We refuse work that makes inequality worse.
 

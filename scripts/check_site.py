@@ -14,7 +14,7 @@ MISSION = (
     "building and sharing excellent technology that helps them do more."
 )
 VALUES = {
-    "Justice": (
+    "Equity": (
         "Impact Works is as much a political act as it is a business. "
         "We put powerful technology in the hands of people and communities the "
         "market leaves behind. We refuse work that makes inequality worse."
