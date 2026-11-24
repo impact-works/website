@@ -110,6 +110,57 @@ a:focus-visible {
   text-wrap: pretty;
 }
 
+.page-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.client-feedback {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+  gap: 2rem;
+  margin: 1.5rem 0 0;
+}
+
+.client-feedback--text {
+  grid-template-columns: 1fr;
+  margin-top: 2.5rem;
+}
+
+.client-feedback img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.client-feedback blockquote {
+  margin: 0 0 1.5rem;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 4px solid var(--signal);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+}
+
+.client-feedback blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.client-feedback figcaption,
+.client-feedback .photo-credit {
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+.client-feedback .photo-credit {
+  margin-top: 0.75rem;
+}
+
 .page--about {
   display: block;
 }
@@ -156,6 +207,20 @@ a:focus-visible {
   font-weight: 650;
 }
 
+.about-copy--cases h2 + p {
+  margin-top: -0.25rem;
+  font-size: 0.8em;
+  color: #536158;
+}
+
+.about-copy--cases h2 + p em {
+  font-style: normal;
+}
+
+.about-copy--cases h3 + p {
+  font-weight: 400;
+}
+
 .founder-portrait {
   float: right;
   width: 16rem;
@@ -170,6 +235,15 @@ a:focus-visible {
 }
 
 @media (max-width: 40rem) {
+  .client-feedback {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .client-feedback img {
+    width: 160px;
+  }
+
   .founder-portrait {
     float: none;
     width: 12rem;

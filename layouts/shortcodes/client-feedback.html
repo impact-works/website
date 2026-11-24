@@ -1,0 +1,35 @@
+{{ $portrait := resources.Get "images/lily-andersen-closeup.jpg" }}
+{{ $small := $portrait.Fill "300x300 Center webp q85" }}
+{{ $large := $portrait.Fill "600x600 Center webp q85" }}
+<figure class="client-feedback">
+  <img src="{{ $large.RelPermalink }}"
+       srcset="{{ $small.RelPermalink }} 300w, {{ $large.RelPermalink }} 600w"
+       sizes="(max-width: 40rem) 160px, 200px"
+       width="{{ $large.Width }}" height="{{ $large.Height }}"
+       alt="Lily Andersen, KRAC Grants Officer and Operations Manager" loading="lazy">
+  <div>
+    <blockquote>
+      <p>“It felt like technological coaching, rather than a seminar where the instructor just talks at us.”</p>
+      <p>“We were able to get to where we wanted to go in a conversational way, and this made AI not so scary.”</p>
+    </blockquote>
+    <figcaption><strong>Lily Andersen</strong><br>Grants Officer and Operations Manager, KRAC</figcaption>
+    <p class="photo-credit">Photo: <a href="https://www.kootenayartscouncil.com/about/">Kootenay Regional Arts Council</a></p>
+  </div>
+</figure>
+{{ $kallee := resources.Get "images/kallee-lins-closeup.jpg" }}
+{{ $kalleeSmall := $kallee.Fill "300x300 Center webp q85" }}
+{{ $kalleeLarge := $kallee.Fill "600x600 Center webp q85" }}
+<figure class="client-feedback">
+  <img src="{{ $kalleeLarge.RelPermalink }}"
+       srcset="{{ $kalleeSmall.RelPermalink }} 300w, {{ $kalleeLarge.RelPermalink }} 600w"
+       sizes="(max-width: 40rem) 160px, 200px"
+       width="{{ $kalleeLarge.Width }}" height="{{ $kalleeLarge.Height }}"
+       alt="Kallee Lins, KRAC Executive Director" loading="lazy">
+  <div>
+    <blockquote>
+      <p>“You’re a wizard. That was really fun. Thanks, Matt.”</p>
+    </blockquote>
+    <figcaption><strong>Kallee Lins</strong><br>Executive Director, KRAC</figcaption>
+    <p class="photo-credit">Photo: <a href="https://www.kootenayartscouncil.com/about/">Kootenay Regional Arts Council</a></p>
+  </div>
+</figure>

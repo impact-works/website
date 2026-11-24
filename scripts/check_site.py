@@ -91,10 +91,13 @@ assert svg.tag == f"{{{ns['svg']}}}svg" and svg.get("viewBox"), "Invalid SVG log
 assert svg.find("svg:path", ns) is not None, "Missing outlined lettering"
 assert svg.find("svg:circle", ns) is not None, "Missing logo dot"
 assert not any(svg.findall(f".//svg:{tag}", ns) for tag in ["text", "image"]), "Logo must not depend on fonts or raster images"
-assert set(root.rglob("*.html")) == {index, about_index}, "Unexpected HTML pages"
+case_index = root / "case-studies/index.html"
+assert case_index.is_file(), "Missing Case studies page"
+assert set(root.rglob("*.html")) == {index, about_index, case_index}, "Unexpected HTML pages"
 
 home = Page(index)
 about = Page(about_index)
+cases = Page(case_index)
 base_path = urlsplit(canonical(home)).path.rstrip("/")
 
 
@@ -112,7 +115,7 @@ def local_target(href):
 
 
 assert home.headings == [["h1", [BRAND]]], f"Unexpected homepage headings: {home.headings}"
-assert normalize(home.body_text) == f"{BRAND} About {VISION} {MISSION}", "Unexpected homepage copy"
+assert normalize(home.body_text) == f"{BRAND} About Case studies {VISION} {MISSION}", "Unexpected homepage copy"
 assert any(local_target(a["href"]) == about_index for a in home.elements("a")), "Missing About link"
 assert canonical(about) == canonical(home).rstrip("/") + "/about/", "Wrong About canonical"
 
@@ -148,7 +151,26 @@ assert any(a.get("href") == f"{base_path}/" for a in about.elements("a")), "Miss
 current = [a for a in about.elements("a") if a.get("aria-current") == "page"]
 assert len(current) == 1 and local_target(current[0]["href"]) == about_index, "Wrong current-page link"
 
-for page in [home, about]:
+assert canonical(cases) == canonical(home).rstrip("/") + "/case-studies/", "Wrong Case studies canonical"
+client_images = cases.elements("img")
+assert len(client_images) == 2, "Expected two client portraits"
+for client_image in client_images:
+    assert client_image.get("alt") and client_image.get("width") and client_image.get("height"), "Missing accessible image dimensions/description"
+    assert local_target(client_image["src"]).is_file(), "Missing local client portrait"
+    assert client_image.get("sizes"), "Missing client portrait responsive sizes"
+    assert len(client_image.get("srcset", "").split(",")) == 2, "Missing responsive client portrait"
+    for source in client_image["srcset"].split(","):
+        assert local_target(source.strip().rsplit(" ", 1)[0]).is_file(), "Missing responsive client image asset"
+assert len(cases.elements("blockquote")) == 2 and len(cases.elements("figcaption")) == 2, "Each testimonial needs its own semantic attribution"
+
+for page in [home, about, cases]:
+    assert any(local_target(a["href"]) == case_index for a in page.elements("a") if not urlsplit(a.get("href", "")).scheme), "Missing Case studies navigation"
+    active = [a for a in page.elements("a") if a.get("aria-current") == "page"]
+    expected_active = 0 if page is home else 1
+    assert len(active) == expected_active, "Wrong active navigation count"
+    if page is not home:
+        expected_target = about_index if page is about else case_index
+        assert local_target(active[0]["href"]) == expected_target, "Wrong active navigation target"
     assert len(page.elements("main")) == 1, "Expected one main landmark"
     assert len(page.elements("h1")) == 1, "Expected one H1"
     assert len(page.elements("nav")) == 1, "Expected main navigation"
@@ -159,7 +181,7 @@ for page in [home, about]:
     assert metadata.get("description"), "Missing page description"
     assert metadata.get("og:description") == metadata["description"]
     assert metadata.get("og:url") == canonical(page)
-    assert metadata.get("og:title") == ("Impact Works" if page is home else "About Impact Works | Impact Works")
+    assert metadata.get("og:title") == ("Impact Works" if page is home else "About Impact Works | Impact Works" if page is about else "Case studies | Impact Works")
     for attrs in page.elements("link"):
         if attrs.get("rel") == "stylesheet":
             assert local_target(attrs["href"]).is_file(), f"Missing stylesheet: {attrs['href']}"
@@ -168,4 +190,4 @@ for page in [home, about]:
         if not urlsplit(href).scheme:
             assert local_target(href).is_file(), f"Broken internal link: {href}"
 
-print("Passed: homepage, About page, values, navigation, metadata, local assets, and reusable SVG logo.")
+print("Passed: homepage, About, Case studies, navigation, metadata, accessible local portraits, and reusable SVG logo.")

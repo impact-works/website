@@ -1,8 +1,8 @@
 # Impact Works website
 
-A deliberately minimal Hugo website for [impactworks.dev](https://impactworks.dev/). The homepage presents the Impact Works name, vision, and mission. `/about/` introduces founder Matt Wynne and Impact Works’ values.
+A deliberately minimal Hugo website for [impactworks.dev](https://impactworks.dev/). The homepage presents the Impact Works name, vision, and mission. `/about/` introduces founder Matt Wynne and Impact Works’ values. `/case-studies/` presents a short KRAC case study. Sources and publication context are recorded in `docs/content-sources.md`.
 
-Page copy lives in `content/_index.md` and `content/about.md`. Background sources and editorial cautions are recorded in `docs/content-sources.md` (not published by Hugo).
+Page copy lives in `content/_index.md`, `content/about.md`, and `content/case-studies.md`; the KRAC quotation and portrait markup live in `layouts/shortcodes/client-feedback.html`. Background sources and editorial cautions are recorded in `docs/content-sources.md` (not published by Hugo).
 
 ## Local development
 
@@ -15,7 +15,7 @@ build
 check
 ```
 
-`check` builds the site and verifies the homepage copy, About page headings and exact values, navigation between both pages, page metadata, and local stylesheets. Each page must have one H1 and one main landmark, with no scripts or remote assets.
+`check` builds the site and verifies the homepage copy, About page headings and exact values, the Case studies page, client portrait, testimonial attribution, navigation between all pages, page metadata, and local stylesheets. Each page must have one H1 and one main landmark, with no scripts or remote assets.
 
 To check a GitHub Pages project-path build as well:
 

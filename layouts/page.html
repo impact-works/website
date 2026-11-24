@@ -4,7 +4,7 @@
       <a class="brand" href="{{ site.Home.RelPermalink }}">impact works</a>
       {{ partial "navigation.html" . }}
     </header>
-    <article class="about-copy">
+    <article class="about-copy{{ if eq .RelPermalink ("case-studies/" | relURL) }} about-copy--cases{{ end }}">
       <h1 class="page-title">{{ .Title }}</h1>
       {{ .Content }}
     </article>
