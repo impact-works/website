@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 
 BRAND = "impact works"
-VISION = "The world's best technology in the hands of people doing good in the world."
+VISION = "World class technology in the hands of people doing good in the world."
 MISSION = (
     "We’re rooted in our community. We work with small organizations doing good, "
     "building and sharing excellent technology that helps them do more."
